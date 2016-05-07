@@ -132,10 +132,10 @@ angularApp.controller("profileCtrl", ["$scope", "$rootScope", "$firebaseObject",
     
     $scope.isLogin = function () {
         if (authData) {
-            console.log("User " + authData.uid + " is logged in with " + authData.provider);
+            //console.log("User " + authData.uid + " is logged in with " + authData.provider);
             return true;
         } else {
-            console.log("User is logged out");
+            //console.log("User is logged out");
             return false;
         }
     }
@@ -184,14 +184,24 @@ angularApp.controller("profileCtrl", ["$scope", "$rootScope", "$firebaseObject",
 
 angularApp.controller("otherProfileController", ["$scope", "$rootScope", "$firebaseArray", "$firebaseObject", "$routeParams", "currentAuth", function($scope, $rootScope, $firebaseArray, $firebaseObject, $routeParams, currentAuth) {
     
+    var authData = $rootScope.fb.getAuth();
     var userID = $routeParams.userID;
     var userRef = $rootScope.fbUserRef;
+    var currentUser = $firebaseObject(userRef.child(authData.uid));
     $scope.user = $firebaseObject(userRef.child(userID));
     $scope.reviews = $firebaseArray(userRef.child(userID).child("reviews"));
     
     $scope.postReview = function() {
         
-        //$scope.reviews.$add
+        $scope.reviews.$add({
+            authID: authData.uid,
+            authName: currentUser.firstName + " " + currentUser.lastName,
+            rating: $scope.reviewRating,
+            text: $scope.reviewText
+        });
+        
+        $scope.reviewText = "";
+        $scope.reviewRating = 0;
     }
     
 }]);
@@ -204,10 +214,10 @@ angularApp.controller("navCtrl", ["$scope", "$rootScope", function ($scope, $roo
 
     $scope.isLogin = function () {
         if (authData) {
-            console.log("User " + authData.uid + " is logged in with " + authData.provider);
+            //console.log("User " + authData.uid + " is logged in with " + authData.provider);
             return true;
         } else {
-            console.log("User is logged out");
+            //console.log("User is logged out");
             return false;
         }
     }
@@ -220,7 +230,7 @@ angularApp.controller("navCtrl", ["$scope", "$rootScope", function ($scope, $roo
 }]);
 
 angularApp.controller("loginCtrl", ["$scope", "$rootScope", "currentAuth", function ($scope, $rootScope, currentAuth) {
-    console.log('Login');
+    //console.log('Login');
     var ref = $rootScope.fb;
 
     $scope.forgotPassword = false;
@@ -266,7 +276,7 @@ angularApp.controller("loginCtrl", ["$scope", "$rootScope", "currentAuth", funct
 }]);
 
 angularApp.controller("registerCtrl", ["$scope", "$rootScope", "currentAuth", function ($scope, $rootScope, currentAuth) {
-    console.log('Register');
+    //console.log('Register');
 
     var ref = $rootScope.fb;
     var userRef = $rootScope.fbUserRef;
