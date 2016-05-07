@@ -15,13 +15,14 @@ angularApp.controller("testCtrl", ["$scope", "$rootScope", "currentAuth", functi
     console.log('Test');
 }]);
 
-angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "currentAuth", function ($scope, $rootScope, $firebaseArray, currentAuth) {
+angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "$firebaseObject", "currentAuth", function ($scope, $rootScope, $firebaseArray, $firebaseObject, currentAuth) {
     console.log('forum');
 
     var authData = $rootScope.fb.getAuth();
-    var userRef = $rootScope.fb.child("forum");
+    var forumRef = $rootScope.fb.child("forum");
+    var currentUser = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
     
-    $scope.posts = $firebaseArray(userRef);
+    $scope.posts = $firebaseArray(forumRef);
     $scope.origin = "";
     $scope.dest = "";
     $scope.message = "";
@@ -60,7 +61,7 @@ angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "c
     
     $scope.searchTrips = function() {
         
-        var searchRef = userRef;
+        var searchRef = forumRef;
         
         if ($scope.searchOrigin) {
             
@@ -82,6 +83,7 @@ angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "c
         $scope.posts.$add({
             original: {
                 author: authData.uid,
+                authName: currentUser.firstName + " " + currentUser.lastName,
                 origin: $scope.origin,
                 dest: $scope.dest,
                 message: $scope.message,
@@ -102,6 +104,8 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
     $scope.originalPost = $firebaseObject(postRef.child("original"));
     $scope.replies = $firebaseArray(postRef.child("replies"));
     
+    var user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
+    
     $scope.message = "";
     
     $scope.postReply = function() {
@@ -110,6 +114,7 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
         
         $scope.replies.$add({
             author: authData.uid,
+            authName: user.firstName + " " + user.lastName,
             message: $scope.message,
             date: postDate
         });
@@ -118,11 +123,13 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
     };
 }]);
 
-angularApp.controller("profileCtrl", ["$scope", "$rootScope", "currentAuth", function ($scope, $rootScope, currentAuth) {
+angularApp.controller("profileCtrl", ["$scope", "$rootScope", "$firebaseObject", "currentAuth", function ($scope, $rootScope, $firebaseObject, currentAuth) {
     console.log('Profile');
 
     var ref = $rootScope.fb;
     var authData = ref.getAuth();
+    $scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
+    
     $scope.isLogin = function () {
         if (authData) {
             console.log("User " + authData.uid + " is logged in with " + authData.provider);
@@ -173,6 +180,20 @@ angularApp.controller("profileCtrl", ["$scope", "$rootScope", "currentAuth", fun
             }
         });
     }
+}]);
+
+angularApp.controller("otherProfileController", ["$scope", "$rootScope", "$firebaseArray", "$firebaseObject", "$routeParams", "currentAuth", function($scope, $rootScope, $firebaseArray, $firebaseObject, $routeParams, currentAuth) {
+    
+    var userID = $routeParams.userID;
+    var userRef = $rootScope.fbUserRef;
+    $scope.user = $firebaseObject(userRef.child(userID));
+    $scope.reviews = $firebaseArray(userRef.child(userID).child("reviews"));
+    
+    $scope.postReview = function() {
+        
+        //$scope.reviews.$add
+    }
+    
 }]);
 
 angularApp.controller("navCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
@@ -248,6 +269,7 @@ angularApp.controller("registerCtrl", ["$scope", "$rootScope", "currentAuth", fu
     console.log('Register');
 
     var ref = $rootScope.fb;
+    var userRef = $rootScope.fbUserRef;
 
     $scope.createUser = function () {
         ref.createUser({
@@ -258,6 +280,13 @@ angularApp.controller("registerCtrl", ["$scope", "$rootScope", "currentAuth", fu
                 console.log("Error creating user:", error);
             } else {
                 console.log("Successfully created user account with uid:", userData.uid);
+                
+                userRef.child(userData.uid).set({
+                    firstName: $scope.firstName,
+                    lastName: $scope.lastName,
+                    email: $scope.email
+                });
+                
                 ref.authWithPassword({
                     email: $scope.email,
                     password: $scope.password

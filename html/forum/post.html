@@ -1,7 +1,7 @@
 <div>
     <!-- Original Post -->
-    <h1>{{postID}}</h1>
-    <h3>From {{originalPost.origin}} to {{originalPost.dest}}</h3>
+    <h1>From {{originalPost.origin}} to {{originalPost.dest}}</h1>
+    <h3><a href="/#/profile/{{originalPost.author}}">{{originalPost.authName}}</a></h3>
     <p>{{originalPost.date}}</p>
     <p>{{originalPost.message}}</p>
     <hr />
@@ -10,7 +10,7 @@
     <ul>
         <li ng-repeat="reply in replies">
             <p>
-                <b>{{reply.author}}</b>
+                <b><a href="/#/profile/{{originalPost.author}}">{{reply.authName}}</a></b>
                 <br />
                 {{reply.date}}
                 <br />

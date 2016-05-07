@@ -3,7 +3,7 @@ var angularApp = angular.module('angularApp', ['ngRoute', 'firebase'])
     //Create Auth Factory
 angularApp.factory("Auth", ["$firebaseAuth",
   function ($firebaseAuth) {
-        var ref = new Firebase("https://hitchhacker.firebaseio.com/");
+        var ref = new Firebase("https://nathan-testing.firebaseio.com/");
         return $firebaseAuth(ref);
   }
 
@@ -14,6 +14,7 @@ angularApp.run(function ($rootScope, $location, $window, $firebase, $firebaseAut
 
     //Create the Firebase ref object "fb" that represents the Entire FireBase Database
     $rootScope.fb = new Firebase("https://nathan-testing.firebaseio.com/");
+    $rootScope.fbUserRef = $rootScope.fb.child("users");
 
     //SECURITY HANDLERS --------------------- //
 

@@ -54,6 +54,20 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
             }]
         }
     })
+    
+    .when('/profile/:userID', {
+        controller: 'otherProfileController',
+        templateUrl: 'html/profile/otherProfile.html',
+        routedata: {
+            access: '0',
+            title: 'Profile'
+        },
+        resolve: {
+            'currentAuth': ['Auth', function(Auth) {
+                return Auth.$waitForAuth();
+            }]
+        }
+    })
 
     .when('/forum/', {
         controller: 'forumCtrl',
