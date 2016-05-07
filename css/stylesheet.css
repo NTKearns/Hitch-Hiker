@@ -1,0 +1,48 @@
+﻿ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: black;
+}
+
+.signup {
+	color: #C0C0C0;
+	position: fixed;
+	top: 50%;
+	left: 50%; /* bring your own prefixes */;
+	transform: translate(-50%, -50%);
+}
+
+.fontColorWhite {
+    color: #C0C0C0;
+}
+
+.background {
+    background-image: url("..\blue_metal.png");
+    /* background-color: #cccccc;*/
+    /* background-repeat: repeat|repeat-x|repeat-y; */
+}
+
+.title {
+	text-align: center;
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+
