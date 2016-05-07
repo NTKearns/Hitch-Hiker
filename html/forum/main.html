@@ -1,0 +1,28 @@
+<!--Pushing to Database -->
+<div>
+    <input type="button" value="Create Trip" ng-show="showPostButton" ng-click="showTripForm()">
+    <input type="button" value="Search" ng-show="showSearchButton" ng-click="showSearchTripForm()">
+    
+    <form ng-submit="searchTrips()" ng-show="showSearchForm">
+        <br /> Origin:
+        <input type="text" size="30" ng-model="searchOrigin">
+        <br /> Destination:
+        <input type="text" size="30" ng-model="searchDest">
+        <br />
+        <input type="button" value="Close" ng-click="hideSearchTripForm()">
+        <input class="btn-primary" type="submit" value="Search">
+    </form>
+    
+    <form ng-submit="newTrip()" ng-show="showPostForm">
+        <br/> Origin:
+        <input type="text" size="30" ng-model="origin" placeholder="Origin" required>
+        <br/> Destination:
+        <input type="text" size="30" ng-model="dest" placeholder="Destination" required>
+        <input type="text" size="30" ng-model="message" placeholder="Message">
+        <input class="btn-primary" type="submit" value="Push">
+    </form>
+    
+    <ul class="unstyled">
+        <li ng-repeat="post in posts"><a href="/#/forum/{{post.$id}}">{{post.original.origin}} to {{post.original.dest}}</a></li>
+    </ul>
+</div>

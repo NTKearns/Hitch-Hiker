@@ -1,0 +1,32 @@
+<div>
+    <!-- Original Post -->
+    <h1>{{postID}}</h1>
+    <h3>From {{originalPost.origin}} to {{originalPost.dest}}</h3>
+    <p>{{originalPost.date}}</p>
+    <p>{{originalPost.message}}</p>
+    <hr />
+    
+    <!-- Replies -->
+    <ul>
+        <li ng-repeat="reply in replies">
+            <p>
+                <b>{{reply.author}}</b>
+                <br />
+                {{reply.date}}
+                <br />
+                {{reply.message}}
+            </p>
+        </li>
+    </ul>
+    <hr />
+    
+    <!-- Submit Form -->
+    <form ng-submit="postReply()">
+        <br />
+        Reply:
+        <br />
+        <textarea ng-model="message" rows="5" cols="120" required></textarea>
+        <br />
+        <input class="btn-primary" type="submit" value="Submit">
+    </form>
+</div>

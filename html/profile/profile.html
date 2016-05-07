@@ -1,0 +1,38 @@
+<div ng-show="isLogin()">
+    <!--Change Email-->
+    <form ng-submit="changeEmail()">
+        <br/> Change Email
+        <br/> Old Email:
+        <input type="text" size="30" ng-model="oldemail" placeholder="example@email.com">
+        <br/> Email:
+        <input type="text" size="30" ng-model="newemail" placeholder="example@email.com">
+        <br/> Password:
+        <input type="text" size="30" ng-model="emailPassword" placeholder="password">
+        <br/>
+        <input class="btn-primary" type="submit" value="Change Email">
+    </form>
+    <br/>
+    <!--Change Password-->
+    <form ng-submit="changePassword()">
+        <br/> Change Password
+        <br/> Email:
+        <input type="text" size="30" ng-model="passwordEmail" placeholder="example@email.com">
+        <br/> Old Password:
+        <input type="text" size="30" ng-model="oldpassword" placeholder="password">
+        <br/> New Password:
+        <input type="text" size="30" ng-model="newpassword" placeholder="password">
+        <br/>
+        <input class="btn-primary" type="submit" value="Change Password">
+    </form>
+    <br/>
+    <!--Delete Account-->
+    <form ng-submit="deleteAccount()">
+        <br/> Do you want to delete your account?
+        <br/> Email:
+        <input type="text" size="30" ng-model="email" placeholder="example@email.com">
+        <br/> Password:
+        <input type="text" size="30" ng-model="password" placeholder="password">
+        <br/>
+        <input class="btn-primary" type="submit" value="Delete Account">
+    </form>
+</div>
