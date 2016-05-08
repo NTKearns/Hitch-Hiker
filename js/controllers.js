@@ -302,3 +302,58 @@ angularApp.controller("registerCtrl", ["$scope", "$rootScope", "currentAuth", fu
         });
     };
 }]);
+
+angularApp.controller("messagingCtrl", ["$scope", "$rootScope", "$firebaseArray",  "$firebaseObject", "currentAuth", function ($scope, $rootScope, $firebaseArray, $firebaseObject, currentAuth) {                                  
+/*
+    var ref = $rootScope.fb;
+var authData = ref.getAuth();
+$scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
+//$scope.firstName = user.firstName;
+*/
+    
+    var authData = $rootScope.fb.getAuth();
+    var userRef = $rootScope.fbUserRef;
+    var chat = $rootScope.fb;
+    var currentUser = $firebaseObject(userRef.child(authData.uid));
+     $scope.messaging = $firebaseArray($rootScope.fb.child("chat"));
+    $scope.messages = "";
+    var messageList;
+    
+    $scope.postMessage = function() {
+        
+    $scope.messaging.$add({
+        author: authData.uid,
+        message: $scope.messages
+        
+    });
+    console.log($scope.messages);
+    };
+    
+    
+    
+
+    
+
+ 
+    
+         console.log(currentUser);
+    console.log("First Name" + (currentUser.firstName));
+            /*
+            getName.once("value", function(allMessagesSnapshot) {
+                allMessagesSnapshot.forEach(function(messageSnapshot)
+                {
+                    var key = messageSnapshot.key();
+                    if(key == authData.uid)
+                    {
+                        user = messageSnapshot.child("firstName").val();
+                    }
+                });
+            });
+            */
+}]);
+           
+
+		
+	
+
+                                        
