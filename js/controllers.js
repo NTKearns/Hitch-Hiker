@@ -360,6 +360,8 @@ $scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
         };
         
         $scope.messageList.$add(message);
+        
+        $scope.messageText = "";
     };
 }]);
            
