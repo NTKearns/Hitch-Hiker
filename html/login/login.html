@@ -1,17 +1,20 @@
+
 <div>
-    <br /> IMPORTED LOGIN PAGE CONTENT
-    <br/>
-    <form ng-submit="loginUser()" ng-hide="forgotPassword">
-        <br/> Email:
-        <input type="text" size="30" ng-model="email" placeholder="example@email.com">
-        <br/> Password:
-        <input type="text" size="30" ng-model="password" placeholder="password">
+	<form class="signup" ng-submit="loginUser()" ng-hide="forgotPassword">
+		<table style="width:100%;color:white;">
+            <tr>
+                <td>Email:</td>
+                <td>
+                    <input type="text" name="email" size="30" placeholder="example@domain.com" ng-model="email">
+                </td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>
+                    <input type="password" name="password" size="30" placeholder="password" ng-model="password">
+                </td>
+            </tr>
+        </table>
         <input class="btn-primary" type="submit" value="Login">
-    </form>
-    <form ng-submit="resetPassword()" ng-show="forgotPassword">
-        <br/> Email:
-        <input type="text" size="30" ng-model="email" placeholder="example@email.com">
-        <input class="btn-primary" type="submit" value="Reset Password">
-    </form>
-    <input type="button" value="{{message()}}" ng-click="isVisible()" />
+	</form>
 </div>
