@@ -8,8 +8,25 @@
     <br />
     
     <ul>
-        <li>
+        <li ng-repeat="review in reviews">
+            <b><a href="/#/profile/{{review.authID}}">{{review.authName}}</a></b><br />
+            Rating: {{review.rating}}<br />
+            {{review.text}}
         </li>
     </ul>
+    
+    <form ng-submit="postReview()">
+        <label>1 <input type="radio" name="ratingGroup" ng-model="reviewRating" value="1" required></label>
+        <label>| 2 <input type="radio" name="ratingGroup" ng-model="reviewRating" value="2" required></label>
+        <label>| 3 <input type="radio" name="ratingGroup" ng-model="reviewRating" value="3" required></label>
+        <label>| 4 <input type="radio" name="ratingGroup" ng-model="reviewRating" value="4" required></label>
+        <label>| 5 <input type="radio" name="ratingGroup" ng-model="reviewRating" value="5" required></label>
+        <br />
+        Reply:
+        <br />
+        <textarea ng-model="reviewText" rows="5" cols="80" placeholder="Enter review here..." required></textarea>
+        <br />
+        <input class="btn-primary" type="submit" value="Submit">
+    </form>
     
 </div>
