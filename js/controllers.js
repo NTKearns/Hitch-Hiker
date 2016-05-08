@@ -311,6 +311,7 @@ $scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
 //$scope.firstName = user.firstName;
 */
     
+    /*
     var authData = $rootScope.fb.getAuth();
     var userRef = $rootScope.fbUserRef;
     var chat = $rootScope.fb;
@@ -328,28 +329,28 @@ $scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
     });
     console.log($scope.messages);
     };
+    */
     
+    var authData = $rootScope.fb.getAuth();
+    var userRef = $rootScope.fbUserRef;
+    var chatRef = $rootScope.fbChatRef;
+    $scope.currentUser = $firebaseObject(userRef.child(authData.uid));
+    $scope.messageList = $firebaseArray(chatRef);
     
-    
-
-    
-
- 
-    
-         console.log(currentUser);
-    console.log("First Name" + (currentUser.firstName));
-            /*
-            getName.once("value", function(allMessagesSnapshot) {
-                allMessagesSnapshot.forEach(function(messageSnapshot)
-                {
-                    var key = messageSnapshot.key();
-                    if(key == authData.uid)
-                    {
-                        user = messageSnapshot.child("firstName").val();
-                    }
-                });
-            });
-            */
+    $scope.sendMessage = function() {
+        
+        // concat the user's first and last name together
+        var userName = $scope.currentUser.firstName + " " + $scope.currentUser.lastName;
+        
+        // create the message object, includes the user's full name, their uid, and their message
+        var message = {
+            userName: userName,
+            userID: authData.uid,
+            text: $scope.messageText
+        };
+        
+        $scope.messageList.$add(message);
+    };
 }]);
            
 
