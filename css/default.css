@@ -31,9 +31,11 @@
 
 .DivWithScroll 
 {
-    height:120px;
-    overflow:scroll;
-    overflow-x:hidden;
+	width: 100%;
+    height: 600px;
+    /*overflow: scroll;*/
+    overflow-x: hidden;
+    overflow-y: scroll | hidden;
 }
 
 #content {
