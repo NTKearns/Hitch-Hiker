@@ -1,57 +1,18 @@
-
-<h1 class="title">
-Register
-</h1>
-
 <div>
-   <form class="signup" ng-submit="createUser()">
-        <table style="width:100%;color:white;">
-            <tr>
-                <td>Email: </td>
-                <td>
-                    <input type="email" name="mail" size="30" placeholder="example@domain.com" ng-model="email">
-                </td>
-            </tr>
-            <tr>
-                <td>Username: </td>
-                <td>
-                    <input type="text" name="user" size="30" placeholder="username"> </td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td>
-                    <input type="password" name="password" placeholder="password" ng-model="password">
-                </td>
-            </tr>
-            <tr>
-                <td>Confirm Password:</td>
-                <td>
-                    <input type="password" name="password" placeholder="password" ng-model="password_confirm">
-                </td>
-            </tr>
-            <tr>
-                <td> First Name:</td>
-                <td>
-                    <input type="text" name="FirstName" size="16" placeholder="First Name" ng-model="firstName">
-                </td>
-            </tr>
-            <tr>
-                <td> Last Name:</td>
-                <td>
-                    <input type="text" name="LastName" size="16" placeholder="Last Name" ng-model="lastName">
-                </td>
-            </tr>
-            <tr>
-                <td> Date of Birth:</td>
-                <td>
-                    <input type="date" name="bday" placeholder="1998-01-01" ng-model="user_dob">
-                </td>
-            </tr>
-            <br>
-        </table>
+
+    <br /> IMPORTED Register PAGE CONTENT
+    <br/>
+    <form ng-submit="createUser()">
+        <br/> First Name:
+        <input type="text" size="16" ng-model="firstName">
+        <br /> Last Name:
+        <input type="text" size="16" ng-model="lastName">
+        <br/> Email:
+        <input type="text" size="30" ng-model="email" placeholder="example@email.com">
+        <br/> Password:
+        <input type="text" size="30" ng-model="password" placeholder="password">
         <input class="btn-primary" type="submit" value="Register">
-        <br>
-        <a href="/#/login" style="color:aqua">Go to Login</a>
-        <br/>
     </form>
+    <a href="login">Go to Login</a>
+    <br/>
 </div>
