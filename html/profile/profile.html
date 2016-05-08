@@ -1,51 +1,9 @@
-<head>
- 	<link href="../../css/stylesheet.css" rel="stylesheet" type="text/css" />
- </head>
- 
-<h1 class="title">
-Profile
-</h1>
-
 <div ng-show="isLogin()">
-    <!-- Other Shit 
+    <!-- Other Shit -->
     <h1>{{user.firstName}} {{user.lastName}}</h1>
     <h3>{{user.email}}</h3>
     
-    <!-- View Profile -->
-    <form>
-    <table style="width:100%;color:white;">
-            <tr>
-                <td>Username: </td>
-                <td>
-                    <input type="text" name="Username" placeholder="<Username>">
-                </td>
-            </tr>
-            <tr>
-                <td> First Name:</td>
-                <td>
-                    <input type="text" name="FirstName" placeholder="<First Name>"> </td>
-            </tr>
-            <tr>
-                <td> Last Name:</td>
-                <td>
-                    <input type="text" name="LastName" placeholder="<Last Name>">
-                </td>
-            </tr>
-            <tr>
-                <td> Date of Birth:</td>
-                <td>
-                    <input type="date" name="bday" placeholder="1998-01-01">
-                </td>
-            </tr>
-        </table>
-         <button type="submit" formaction="profile.html">Edit Profile</button>
-          <!-- this button hides the view profile stuff aboves and make the Edit Profile stuff below visible-->
-    </form>
-    
-    
-    <!-- Edit Profile -->
-    <!-- any submit button in the edit profile section will hide the entire edit profile section and show the view profile section -->
-     <!--Change Email-->
+    <!--Change Email-->
     <form ng-submit="changeEmail()">
         <br/> Change Email
         <br/> Old Email:
@@ -56,7 +14,6 @@ Profile
         <input type="text" size="30" ng-model="emailPassword" placeholder="password">
         <br/>
         <input class="btn-primary" type="submit" value="Change Email">
-        
     </form>
     <br/>
     <!--Change Password-->
@@ -83,4 +40,3 @@ Profile
         <input class="btn-primary" type="submit" value="Delete Account">
     </form>
 </div>
-
