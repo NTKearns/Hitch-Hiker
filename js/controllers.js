@@ -189,7 +189,7 @@ angularApp.controller("otherProfileController", ["$scope", "$rootScope", "$fireb
     var userRef = $rootScope.fbUserRef;
     var currentUser = $firebaseObject(userRef.child(authData.uid));
     $scope.user = $firebaseObject(userRef.child(userID));
-    $scope.reviews = $firebaseArray(userRef.child(userID).child("reviews"));
+    $scope.reviews = $firebaseArray(userRef.child(userID).child("reviews").limitToLast(20));
     
     $scope.postReview = function() {
         
