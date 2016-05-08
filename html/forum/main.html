@@ -3,7 +3,7 @@
     <input type="button" value="Create Trip" ng-show="showPostButton" ng-click="showTripForm()">
     <input type="button" value="Search" ng-show="showSearchButton" ng-click="showSearchTripForm()">
     
-    <form style="color:white;" ng-submit="searchTrips()" ng-show="showSearchForm">
+    <form ng-submit="searchTrips()" ng-show="showSearchForm">
         <br /> Origin:
         <input type="text" size="30" ng-model="searchOrigin">
         <br /> Destination:
@@ -13,7 +13,7 @@
         <input class="btn-primary" type="submit" value="Search">
     </form>
     
-    <form style="color:white;" ng-submit="newTrip()" ng-show="showPostForm">
+    <form ng-submit="newTrip()" ng-show="showPostForm">
         <br/> Origin:
         <input type="text" size="30" ng-model="origin" placeholder="Origin" required>
         <br/> Destination:
