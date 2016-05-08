@@ -93,6 +93,8 @@ angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "$
         
         $scope.hideTripForm();
     }
+    
+    
 }]);
 
 angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebaseArray", "$firebaseObject", "$routeParams", "currentAuth", function ($scope, $rootScope, $firebaseArray, $firebaseObject, $routeParams, currentAuth) {
@@ -121,6 +123,55 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
         
         $scope.message = "";
     };
+    
+    var map;
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+    var geocoder = new google.maps.Geocoder(); //Used to deal with different types of addressing
+    
+    /*
+    $scope.directions = {
+        origin: "",
+        destination: "",
+        show: false
+        
+    }
+    */
+    
+     function initMap() {
+        var directionRequest = {
+            origin: $scope.originalPost.origin,
+            destination: $scope.originalPost.dest,
+             travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        
+       var LatLng =  {lat: 41, lng: -85};
+        map = new google.maps.Map(document.getElementById('map'), {
+            control: {},
+            center: LatLng,
+             zoom: 14,
+             mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+         /*
+         var marker = new google.maps.Marker({
+          position: LatLng,
+          map: map
+        });
+          */
+        
+        directionsService.route(directionRequest, function (response, status) {
+      if (status === google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsList'));
+          console.log('Going');
+      } else {
+        alert('Google route unsuccesfull!, Incorrect Destination Format');
+      }
+    });
+    }
+    $scope.getDirections = initMap;
+    
 }]);
 
 angularApp.controller("profileCtrl", ["$scope", "$rootScope", "$firebaseObject", "currentAuth", function ($scope, $rootScope, $firebaseObject, currentAuth) {
@@ -204,7 +255,11 @@ angularApp.controller("otherProfileController", ["$scope", "$rootScope", "$fireb
         $scope.reviewRating = 0;
     }
     
+    
+    
 }]);
+    
+
 
 angularApp.controller("navCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
     console.log('nav');

@@ -1,9 +1,11 @@
-<div>
+<div >
     <!-- Original Post -->
     <h1>From {{originalPost.origin}} to {{originalPost.dest}}</h1>
     <h3><a href="/#/profile/{{originalPost.author}}">{{originalPost.authName}}</a></h3>
     <p>{{originalPost.date}}</p>
     <p>{{originalPost.message}}</p>
+    <div id="map" style="width:1000px;height:750px;"></div>
+    <button ng-click="getDirections()">Get Directions</button>
     <hr />
     
     <!-- Replies -->
@@ -30,3 +32,4 @@
         <input class="btn-primary" type="submit" value="Submit">
     </form>
 </div>
+
