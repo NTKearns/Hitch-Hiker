@@ -23,6 +23,13 @@
     </form>
     
     <ul class="unstyled">
-        <li ng-repeat="post in posts"><a href="/#/forum/{{post.$id}}">{{post.original.origin}} to {{post.original.dest}}</a></li>
+        <li ng-repeat="post in posts">
+            <a href="/#/forum/{{post.$id}}">{{post.original.origin}} to {{post.original.dest}}</a><br/>
+            <sub>
+                <a href="/#/profile/{{post.original.author}}">{{post.original.authName}}</a>
+                - {{post.original.date}}
+            </sub>
+            <hr/>
+        </li>
     </ul>
 </div>
