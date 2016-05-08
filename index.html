@@ -15,6 +15,10 @@
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="/css/ChatBar.css" />
+
+
+    <script src="/js/ChatOverlay.js" type="text/javascript"></script>
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" type="text/javascript"></script>
@@ -35,14 +39,13 @@
 
 
     <title>Angular Template</title>
-    </script>
 
 </head>
 
 <body class="background">
 
     <!--Global Navigation Bar-->
-    <div id="navbar" ng-controller="navCtrl">
+    <div id="navbar" ng-controller="navCtrl" class="NavBarBackground">
 
         <!--NAV BAR hides when logged in/out-->
         <a href="/#/"  style="color:aqua">HOME</a>
@@ -62,7 +65,24 @@
 
     <!--SITE VIEW DIV-->
     <div ng-view autoscroll="true"></div>
+  
 
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

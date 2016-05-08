@@ -24,22 +24,30 @@ li a:hover {
 
 .signup {
 	color: #C0C0C0;
-	position: fixed;
+	 /*position: fixed;
 	top: 50%;
-	left: 50%; /* bring your own prefixes */;
-	transform: translate(-50%, -50%);
+	left: 50%;*/
+	 /* bring your own prefixes */;
+	/*transform: translate(-50%, -50%);*/
 }
 
 .fontColorWhite {
     color: #C0C0C0;
 }
 
-.background {
-    background-image: url("..\blue_metal.png");
-    /* background-color: #cccccc;*/
-    /* background-repeat: repeat|repeat-x|repeat-y; */
+
+.NavBarBackground{
+	background-image: url("blue_metal.png");
+	background-attachment: fixed;
+	background-repeat: repeat|repeat-x|;
 }
 
+.background {
+	background-image: url("blue_metal.png");
+    background-attachment: fixed;
+    height:100vh;
+	background-repeat: repeat|repeat-x|repeat-y;	
+}
 .title {
 	text-align: center;
 	color: #C0C0C0;
