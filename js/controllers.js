@@ -70,7 +70,7 @@ angularApp.controller("forumCtrl", ["$scope", "$rootScope", "$firebaseArray", "$
         
         if ($scope.searchDest) {
             
-            searchRef = searchRef.orderByChild("original/dest").equalTo($scope.searchDest);
+            //searchRef = searchRef.orderByChild("original/dest").equalTo($scope.searchDest);
         }
         
         $scope.posts = $firebaseArray(searchRef);
