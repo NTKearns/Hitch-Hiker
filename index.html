@@ -14,7 +14,6 @@
 
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
-    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" type="text/javascript"></script>
@@ -35,50 +34,34 @@
 
 
     <title>Angular Template</title>
+    </script>
 
 </head>
 
 <body class="background">
 
     <!--Global Navigation Bar-->
-    <div id="navbar" ng-controller="navCtrl" class="NavBarBackground">
+    <div class="NavBarBackground" id="navbar" ng-controller="navCtrl">
 
         <!--NAV BAR hides when logged in/out-->
-        <a href="/#/"  style="color:aqua">HOME</a>
-        <a href="/#/login" ng-hide="isLogin()" style="color:aqua">LOGIN</a>
-        <a href="/#/register" ng-hide="isLogin()" style="color:aqua">REGISTER</a>
-        <a href="/#/profile" ng-show="isLogin()" style="color:aqua">PROFILE</a>
-        <a href="/#/forum" ng-show="isLogin()" style="color:aqua">FORUM</a>
-        <a href="/#/info" style="color:aqua">ABOUT</a>
-        <a href="/#/message" ng-show="isLogin()" style="color:aqua">MESSAGING</a>
+        <a href="/#/">HOME</a>
+        <a href="/#/login" ng-hide="isLogin()">LOGIN</a>
+        <a href="/#/register" ng-hide="isLogin()">REGISTER</a>
+        <a href="/#/profile" ng-show="isLogin()">PROFILE</a>
+        <a href="/#/forum" ng-show="isLogin()">FORUM</a>
+        <a href="/#/info">ABOUT</a>
+        <a href="/#/message" ng-show="isLogin()">MESSAGING</a>
+
         <!--This is a test button for console-->
         <input type="button" value="Logged in?" ng-click="isLogin()" />
 
         <!--Logout Button-->
         <input type="button" value="Logout" ng-show="isLogin()" ng-click="logout()" />
-
     </div>
 
     <!--SITE VIEW DIV-->
     <div ng-view autoscroll="true"></div>
-  
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

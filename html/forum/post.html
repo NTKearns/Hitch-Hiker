@@ -1,16 +1,16 @@
 <div>
     <!-- Original Post -->
-    <h1 style="color:white;">From {{originalPost.origin}} to {{originalPost.dest}}</h1>
-    <h3 style="color:white;"><a href="/#/profile/{{originalPost.author}}" style="color:white;">{{originalPost.authName}}</a></h3>
-    <p style="color:white;">{{originalPost.date}}</p>
-    <p style="color:white;">{{originalPost.message}}</p>
+    <h1>From {{originalPost.origin}} to {{originalPost.dest}}</h1>
+    <h3><a href="/#/profile/{{originalPost.author}}">{{originalPost.authName}}</a></h3>
+    <p>{{originalPost.date}}</p>
+    <p>{{originalPost.message}}</p>
     <hr />
     
     <!-- Replies -->
     <ul>
-        <li  style="color:white;" ng-repeat="reply in replies">
+        <li ng-repeat="reply in replies">
             <p>
-                <b style="color:white;"><a href="/#/profile/{{originalPost.author}}" style="color:white;">{{reply.authName}}</a></b>
+                <b><a href="/#/profile/{{originalPost.author}}">{{reply.authName}}</a></b>
                 <br />
                 {{reply.date}}
                 <br />
@@ -21,7 +21,7 @@
     <hr />
     
     <!-- Submit Form -->
-    <form style="color:white;" ng-submit="postReply()">
+    <form ng-submit="postReply()">
         <br />
         Reply:
         <br />
