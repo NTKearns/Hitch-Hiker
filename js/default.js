@@ -15,6 +15,8 @@ angularApp.run(function ($rootScope, $location, $window, $firebase, $firebaseAut
     //Create the Firebase ref object "fb" that represents the Entire FireBase Database
     $rootScope.fb = new Firebase("https://nathan-testing.firebaseio.com/");
     $rootScope.fbUserRef = $rootScope.fb.child("users");
+    $rootScope.fbChatRef = $rootScope.fb.child("chat");
+    //$rootScope.fbUserGet = new Firebase("https://nathan-testing.firebaseio.com/users");
 
     //SECURITY HANDLERS --------------------- //
 

@@ -1,0 +1,39 @@
+<!--
+<!DOCTYPE html> 
+	<html>
+    <body>
+
+		    	
+
+<div> 
+     <p> Name: {{firstName}} </p>
+  <p>Message :<input type="text" ng-model="newmessage.text"></p>
+    <div>
+  <input type='text' ng-model="messages"  placeholder='Type a message...'>
+    </div>
+    <button ng-click="postMessage()">Send Message</button>  
+    
+    <ul>
+  <li ng-repeat="message in messages">
+      {{messages.message}}
+        </li>
+</ul>
+ 
+	</body> 
+	</html>
+        -->
+
+<div>
+    <div style="width: 100%; height: 300px;">
+        <ul>
+            <li ng-repeat="message in messageList">
+                <a href="/#/profile/{{message.userID}}">{{message.userName}}</a>
+                : {{message.text}}
+            </li>
+        </ul>
+    </div>
+    <form ng-submit="sendMessage()">
+        <textarea ng-model="messageText" rows="4" cols="80" placeholder="Enter message here..." required></textarea><br/>
+        <input class="btn-primary" type="submit" value="Send">
+    </form>
+</div>

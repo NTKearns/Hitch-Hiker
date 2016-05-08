@@ -175,6 +175,25 @@ angularApp.config(['$routeProvider', '$locationProvider', function ($routeProvid
             }]
         }
     })
+    
+    //Route for Messaging  
+    .when('/message/', {
+        // the rest is the same for ui-router and ngRoute...
+        controller: 'messagingCtrl',
+        templateUrl: 'html/message/message.html',
+        routedata: {
+            access: '0',
+            title: 'Settings'
+        },
+        resolve: {
+            // controller will not be loaded until $waitForAuth resolves
+            // Auth refers to our $firebaseAuth wrapper in the example above
+            'currentAuth': ['Auth', function (Auth) {
+                // $waitForAuth returns a promise so the resolve waits for it to complete
+                return Auth.$waitForAuth();
+            }]
+        }
+    })
 
     //If the Route is not found
     .otherwise({

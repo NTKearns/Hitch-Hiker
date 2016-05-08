@@ -312,3 +312,59 @@ angularApp.controller("registerCtrl", ["$scope", "$rootScope", "currentAuth", fu
         });
     };
 }]);
+
+angularApp.controller("messagingCtrl", ["$scope", "$rootScope", "$firebaseArray",  "$firebaseObject", "currentAuth", function ($scope, $rootScope, $firebaseArray, $firebaseObject, currentAuth) {                                  
+/*
+    var ref = $rootScope.fb;
+var authData = ref.getAuth();
+$scope.user = $firebaseObject($rootScope.fbUserRef.child(authData.uid));
+//$scope.firstName = user.firstName;
+*/
+    
+    /*
+    var authData = $rootScope.fb.getAuth();
+    var userRef = $rootScope.fbUserRef;
+    var chat = $rootScope.fb;
+    var currentUser = $firebaseObject(userRef.child(authData.uid));
+     $scope.messaging = $firebaseArray($rootScope.fb.child("chat"));
+    $scope.messages = "";
+    var messageList;
+    
+    $scope.postMessage = function() {
+        
+    $scope.messaging.$add({
+        author: authData.uid,
+        message: $scope.messages
+        
+    });
+    console.log($scope.messages);
+    };
+    */
+    
+    var authData = $rootScope.fb.getAuth();
+    var userRef = $rootScope.fbUserRef;
+    var chatRef = $rootScope.fbChatRef;
+    $scope.currentUser = $firebaseObject(userRef.child(authData.uid));
+    $scope.messageList = $firebaseArray(chatRef);
+    
+    $scope.sendMessage = function() {
+        
+        // concat the user's first and last name together
+        var userName = $scope.currentUser.firstName + " " + $scope.currentUser.lastName;
+        
+        // create the message object, includes the user's full name, their uid, and their message
+        var message = {
+            userName: userName,
+            userID: authData.uid,
+            text: $scope.messageText
+        };
+        
+        $scope.messageList.$add(message);
+    };
+}]);
+           
+
+		
+	
+
+                                        
