@@ -22,19 +22,13 @@
 	</body> 
 	</html>
         -->
-<br /> 
-<br />
-<br />
-<br />
-<br />
-<br />
 
-<div class="DivToScroll">
-    <div class="DivWithScroll">
+<div>
+    <h1>Global Chat</h1>
+    <div id="chatBox">
         <ul>
             <li ng-repeat="message in messageList">
-                <a href="/#/profile/{{message.userID}}">{{message.userName}}</a>
-                : {{message.text}}
+                <a href="/#/profile/{{message.userID}}">{{message.userName}}</a>: {{message.text}}
             </li>
         </ul>
     </div>

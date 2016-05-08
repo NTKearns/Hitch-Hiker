@@ -37,22 +37,19 @@
 
 </head>
 
-<body class="background">
+<body>
 
     <!--Global Navigation Bar-->
-    <div class="NavBarBackground" id="navbar" ng-controller="navCtrl">
+    <div id="navbar" ng-controller="navCtrl">
 
         <!--NAV BAR hides when logged in/out-->
-        <a href="/#/">HOME</a>
-        <a href="/#/login" ng-hide="isLogin()">LOGIN</a>
-        <a href="/#/register" ng-hide="isLogin()">REGISTER</a>
-        <a href="/#/profile" ng-show="isLogin()">PROFILE</a>
-        <a href="/#/forum" ng-show="isLogin()">FORUM</a>
-        <a href="/#/info">ABOUT</a>
-        <a href="/#/message" ng-show="isLogin()">MESSAGING</a>
-
-        <!--Logout Button-->
-        <input type="button" value="Logout" ng-show="isLogin()" ng-click="logout()" />
+        <ul>
+            <li><a href="/#/" ng-hide="isLogin()">HOME</a></li>
+            <li><a href="/#/forum" ng-show="isLogin()">Forum</a></li>
+            <li><a href="/#/message" ng-show="isLogin()">Global Chat</a></li>
+            <li style="float: right;"><a href="" ng-click="logout()" ng-show="isLogin()">Log Out</a></li>
+            <li style="float: right;"><a href="/#/profile" ng-show="isLogin()">My Profile</a></li>
+        </ul>
     </div>
 
     <!--SITE VIEW DIV-->
