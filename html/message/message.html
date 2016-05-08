@@ -24,11 +24,11 @@
         -->
 
 <div>
-    <div style="width: 100%; height: 300px;">
+    <h1>Global Chat</h1>
+    <div id="chatBox">
         <ul>
             <li ng-repeat="message in messageList">
-                <a href="/#/profile/{{message.userID}}">{{message.userName}}</a>
-                : {{message.text}}
+                <a href="/#/profile/{{message.userID}}">{{message.userName}}</a>: {{message.text}}
             </li>
         </ul>
     </div>
@@ -37,3 +37,7 @@
         <input class="btn-primary" type="submit" value="Send">
     </form>
 </div>
+
+
+
+
