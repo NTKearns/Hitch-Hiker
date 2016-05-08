@@ -1,7 +1,6 @@
 <div>
-
-    <br /> IMPORTED Register PAGE CONTENT
-    <br/>
+    <h1>Registration</h1>
+    Please fill out this information to quickly create a Hitch-Hacker profile.
     <form ng-submit="createUser()">
         <br/> First Name:
         <input type="text" size="16" ng-model="firstName">
@@ -10,9 +9,9 @@
         <br/> Email:
         <input type="text" size="30" ng-model="email" placeholder="example@email.com">
         <br/> Password:
-        <input type="text" size="30" ng-model="password" placeholder="password">
+        <input type="password" size="30" ng-model="password" placeholder="password">
         <input class="btn-primary" type="submit" value="Register">
     </form>
-    <a href="login">Go to Login</a>
+    <a href="/#/login">Go to Login</a>
     <br/>
 </div>
