@@ -1,5 +1,18 @@
-html {
+﻿html {
     background-color: #ffffff;
+}
+
+.NavBarBackground{
+	background-image: url("blue_metal.png");
+	background-attachment: fixed;
+	background-repeat: repeat|repeat-x|;
+}
+
+.background {
+	background-image: url("blue_metal.png");
+    background-attachment: fixed;
+    height:100vh;
+	background-repeat: repeat|repeat-x|repeat-y;	
 }
 
 body {}
