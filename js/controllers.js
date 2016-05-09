@@ -141,12 +141,15 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
     $scope.mapVisible = false;
     $scope.showMap = function() {
         $scope.mapVisible = true;
+        if (map == null) {
+            initMap();
+        }
     }
     $scope.hideMap = function() {
         $scope.mapVisible = false;
     }
     
-     function initMap() {
+    var initMap = function() {
         var directionRequest = {
             origin: $scope.originalPost.origin,
             destination: $scope.originalPost.dest,
@@ -171,8 +174,7 @@ angularApp.controller("forumPostController", ["$scope", "$rootScope", "$firebase
       if (status === google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
         directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById('directionsList'));
-        $scope.showMap();
+        //directionsDisplay.setPanel(document.getElementById('directionsList'));
           console.log('Going');
       } else {
         alert('Google route unsuccesfull!, Incorrect Destination Format');
@@ -328,7 +330,7 @@ angularApp.controller("loginCtrl", ["$scope", "$rootScope", "currentAuth", funct
                 console.log("Login Failed!", error);
             } else {
                 console.log("Authenticated successfully with payload:", authData);
-                window.location.href = '/#/forum'
+                window.location.href = '/'
             }
         });
     };
