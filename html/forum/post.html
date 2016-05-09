@@ -1,13 +1,19 @@
-<div>
+<div >
     <!-- Original Post -->
     <h1>From {{originalPost.origin}} to {{originalPost.dest}}</h1>
     <h3><a href="/#/profile/{{originalPost.author}}">{{originalPost.authName}}</a></h3>
     <p>{{originalPost.date}}</p>
     <p>{{originalPost.message}}</p>
+    
+    <div id="map" style="height: 400px;" ng-show="mapVisible"></div>
+    <a href="" class="linkButtonInline" ng-hide="mapVisible" ng-click="getDirections()">Show Route</a>
+    <a href="" class="linkButtonInline" ng-show="mapVisible" ng-click="hideMap()">Hide Route</a>
+    
+    
     <hr />
     
     <!-- Replies -->
-    <ul>
+    <ul class="unstyledList">
         <li ng-repeat="reply in replies">
             <p>
                 <b><a href="/#/profile/{{originalPost.author}}">{{reply.authName}}</a></b>
@@ -30,3 +36,4 @@
         <input class="btn-primary" type="submit" value="Submit">
     </form>
 </div>
+
